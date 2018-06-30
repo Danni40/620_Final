@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% block content %}
+        <div>
+            <h2>Blog Listing</h2>
+            <h4><small>RECENT POSTS</small></h4>
+
+            {% if blogs|length == 0 %}
+                <p>No blogs yet</p>
+            {% else %}
+
+                <ul>
+                    {% for blog in blogs %}
+                        <li><h3><a href="/blog?id={{ blog.id }}">{{ blog.title }}</h3></a>
+                            <ul>
+                                <li><h4>{{ blog.body }}</h4></li>
+                                <small>
+                                  <div class="col-sm-9">
+                                    <span class="glyphicon glyphicon-time"></span>  
+                                    Written by:
+                                    <a href="/blog?user={{blog.owner.id}}">{{ blog.owner.username }}</a>
+                                    </small>
+                                  </div>
+                            </ul>
+                        </li>
+                      <br>
+                      <hr/>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        </div>
+    </main>
+{% endblock %}

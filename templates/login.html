@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<!--
+<h2>Login</h2>
+<form action="/login" method="post">
+  <p><label>Username<input type="text" name="username"/></label></p>
+  <p><label>Email<input type="text" name="email"/></label></p>
+  <p><label>Password<input type="password" name="password"/></label></p>
+  <p><input type="submit" value="Login"/></p>
+  <p>Don't have an account?</p> <a href="/signup">Create One!</a>
+</form>
+-->
+<h2>Login</h2>
+<form action="/login" method="post">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <p><input type="submit" value="Login"/></p>
+    <p>Don't have an account?</p> <a href="/signup">Create One!</a>
+  </form>
+
+{% endblock %}

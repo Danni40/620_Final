@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<form action="/newblog" method="post" id="blog_form">
+  <br>Blog Title:<br>
+<textarea rows="4" cols="50" name="blog_name" form="blog_form"></textarea>
+        {% if title_error %}
+        <p class='error'>{{ title_error }}</p>
+        {% endif %}
+  <br>
+  Blog Body:<br>
+<br>
+<textarea rows="4" cols="50" name="blog_body" form="blog_form"></textarea>
+{% if body_error %}
+  <p class='error'>{{ body_error }}</p>
+{% endif %}
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}
+
+    

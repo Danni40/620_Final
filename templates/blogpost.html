@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+
+{% block content %}
+        <div>
+            <h2>{{ blog.title }}</h2>
+            <p><h3>{{ blog.body }}</h3></p>
+            <small>
+                <div class="col-sm-9">
+                <span class="glyphicon glyphicon-time"></span> 
+            Written by:
+                <a href="/blog?user={{blog.owner.id}}">{{ blog.owner.username }}</a>
+            </div>
+            </small>
+            <hr/>
+        </div>
+    </main>
+{% endblock %}

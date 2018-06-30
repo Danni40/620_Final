@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--TODO:  Add meta description and keywords-->
+<head>
+    <title>{{title}}</title>
+    <!--Using Bootstrap CSS which is helpful with styling by using already defined classes and id's.-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+        h2 {
+            background-color: powderblue;
+        }
+        h3 {
+            background-color: plum;
+        }
+            /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {height: 1500px}
+        
+        /* Set gray background color and 100% height */
+        .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+        }
+        
+        /* Set black background color, white text and some padding */
+        footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+        }
+        
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+        .row.content {height: auto;} 
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--style the navigation bar-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="/">Blogs</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/blog">Home</a></li>
+            <li><a href="/newblog">New Blog</a></li>
+            {% if 'user' in session %}
+            <li><a href="https://www.facebook.com">Facebook</a></li>
+            <li><a href="https://www.linkedin.com">LinkedIN</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+            {% for message in messages %}
+            <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+            <h4>Danni's Blog</h4>
+            <br>
+            {% if 'user' in session %}
+            
+            <form action="/logout" method="post" id='logout'>
+              <input type="submit" value="Log Out" />
+            </form>
+            
+            {% endif %}
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Blog..">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+        </div>
+    </div>
+        
+
+
+    {% block content %}
+
+    {% endblock %}
+
+</body>
+
+</html>
